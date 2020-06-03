@@ -74,10 +74,10 @@ def float_value(length=1):
     return array("f", [0] * length)
 
 
-def fetch_value(ttree, branch_name, type_cast):
+def fetch_value(ttree, branch_name, type_cast, index=0):
     branch_object = ttree.GetBranch(branch_name)
     if "TBranchElement" in str(type(branch_object)):
-        new_value = type_cast(branch_object.GetValue(0, 0))
+        new_value = type_cast(branch_object.GetValue(index, 0))
     else:
         new_value = type_cast(getattr(ttree, branch_name))
     return new_value
